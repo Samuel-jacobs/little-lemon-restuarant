@@ -4,8 +4,7 @@ import React from 'react'
 function Nav() {
   return (
     <>
-        
-        <ul>
+        <ul className='navbar'>
             <li><a href='#'>Home</a></li>
             <li><a href='#'>About</a></li>
             <li><a href='#'>Menu</a></li>

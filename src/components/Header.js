@@ -6,13 +6,19 @@ import styled from 'styled-components';
 
 function Header() {
   return (
-    <>
-      
-      <img src={logo} />
-      <Nav />
-    </>
+    <section className="wrapper">
+      <NavWrapper>
+        <img src={logo} />
+        <Nav />
+      </NavWrapper>
+    </section>
 
   )
 }
+
+const NavWrapper = styled.div`
+  display: flex;
+  
+`
 
 export default Header

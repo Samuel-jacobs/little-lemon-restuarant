@@ -1,9 +1,10 @@
 import React from 'react'
 import logo from '../logo.png';
+import styled from 'styled-components';
 
 function Footer() {
   return (
-    <>
+    <Wrapper className='wrapper'>
       <div>
         <img src={logo} />
       </div>
@@ -36,8 +37,20 @@ function Footer() {
         </ul>
 
       </div>
-    </>
+    </Wrapper>
   )
 }
+const Wrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  background-color: #495e57;
+  color: #edefee;
+    ul {
+      list-style-type: none;
+      margin-left: -40px;
+      color: #edefee;
+    }
+  
 
+`
 export default Footer
