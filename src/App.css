@@ -1,6 +1,82 @@
+/* Style Guide */
+@import url('https://fonts.googleapis.com/css2?family=Karla&family=Markazi+Text:wght@500&display=swap');
+* {
+  margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	box-sizing: border-box;
+}
+
+:root {
+  --primary1: #495e57;
+  --primary2: #f4ce14;
+  --secondary1: #ee9972;
+  --secondary2: #fbdabb;
+  --secondary3: #edefee;
+  --secondary4: #333333;
+  --headingfont: 'Markazi Text', serif;
+  --paragraphfont: 'Karla', sans-serif;
+}
+
+h1 {
+  font-size: 64px;
+ 
+  color: var(--primary2);
+  
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--headingfont);
+}
+h2 {
+  font-size: 40px;
+  font-family: var(--headingfont);
+}
+h2.subtitle {
+  color: var(--secondary3);
+}
+p {
+  font-size: 16px;
+  font-family: var(--paragraphfont);
+  
+}
+button.btn {
+  height: 60px;
+  width: 200px;
+  border: none;
+  border-radius: 16px;
+  background-color: #f4ce14;
+  
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+p.banner-text {
+  color: var(--secondary3);
+}
+
+.specials {
+  margin-top: 50px;
+  padding-top: 30px;
+  padding-bottom: 50px;
+}
+
+.testimonials {
+  background-color: #fbdabb;
+  padding-block: 100px;
+}
+.testimonials h2 {
+  text-align: center;
+
+}
+
+
 @media  screen and (min-width: 1024px) {
   .wrapper {
-    padding-inline: 100px;
+    padding-inline: 200px;
   }
 
   .navbar {

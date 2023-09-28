@@ -41,14 +41,17 @@ function Footer() {
   )
 }
 const Wrapper = styled.div`
+  padding-block: 50px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   background-color: #495e57;
   color: #edefee;
     ul {
       list-style-type: none;
-      margin-left: -40px;
       color: #edefee;
+      li {
+        margin-bottom: 10px;
+      }
     }
   
 
