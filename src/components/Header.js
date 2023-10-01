@@ -17,7 +17,10 @@ function Header() {
 }
 
 const NavWrapper = styled.div`
-  display: flex;
+  display: grid;
+  padding-block: 30px;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
   
 `
 

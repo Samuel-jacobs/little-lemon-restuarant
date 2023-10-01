@@ -58,6 +58,14 @@ p.banner-text {
   color: var(--secondary3);
 }
 
+.navbar li {
+  list-style-type: none;
+}
+.navbar a {
+  color: var(--secondary4);
+  text-decoration: none;
+}
+
 .specials {
   margin-top: 50px;
   padding-top: 30px;
@@ -80,9 +88,8 @@ p.banner-text {
   }
 
   .navbar {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
   }
   
 }

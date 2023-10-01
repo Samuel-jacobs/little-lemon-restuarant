@@ -46,9 +46,11 @@ const Wrapper = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   background-color: #495e57;
   color: #edefee;
+  
     ul {
       list-style-type: none;
       color: #edefee;
+      margin-top: 20px;
       li {
         margin-bottom: 10px;
       }
