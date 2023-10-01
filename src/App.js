@@ -1,16 +1,18 @@
 import logo from './logo.svg';
-import Header from './components/Header';
-import Main from './components/Main';
-import Footer from './components/Footer';
+
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import BookingPage from './pages/BookingPage';
 
 function App() {
   return (
-    <>
-      <Header className="wrapper"/>
-      <Main className="wrapper"/>
-      <Footer className="wrapper"/>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path='Bookingpage' element={<BookingPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
