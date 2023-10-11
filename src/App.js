@@ -2,8 +2,8 @@ import logo from './logo.svg';
 
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import BookingPage from './pages/BookingPage';
+import Home from './pages/HomePage';
+import BookingPage from './components/BookingPage';
 
 function App() {
   return (
@@ -11,6 +11,7 @@ function App() {
       <Routes>
         <Route index element={<Home />} />
         <Route path='Bookingpage' element={<BookingPage />} />
+        
       </Routes>
     </BrowserRouter>
   );

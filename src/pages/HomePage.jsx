@@ -4,7 +4,7 @@ import Main from '../components/Main';
 import Footer from '../components/Footer';
 
 
-function Home() {
+function HomePage() {
   return (
     <>
         <Header className="wrapper"/>
@@ -14,4 +14,4 @@ function Home() {
   )
 }
 
-export default Home
+export default HomePage

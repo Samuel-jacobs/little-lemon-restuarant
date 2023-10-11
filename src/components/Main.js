@@ -4,6 +4,8 @@ import BannerImage from '../Images/image.png';
 import CardImg1 from '../Images/special1.png';
 import CardImg2 from '../Images/special2.png';
 import CardImg3 from '../Images/special3.png';
+import BookingPage from './BookingPage';
+import { useState, useReducer } from 'react';
 
 function Banner() {
   return (
@@ -127,15 +129,21 @@ function About() {
 }
 
 function Main() {
+  
+
   return (
     <>
       <Banner />
       <Specials />
       <Testimonials />
       <About />
+      
     </>
   )
+
 }
+
+
 
 const BannerWrapper = styled.div`
   background-color: #495e57;

@@ -81,6 +81,15 @@ p.banner-text {
 
 }
 
+/* booking page */
+input, select {
+  border: 1px solid var(--secondary4);
+  width: 100%;
+}
+
+.bookingformheader {
+  text-align: center;
+}
 
 @media  screen and (min-width: 1024px) {
   .wrapper {
