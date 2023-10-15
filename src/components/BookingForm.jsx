@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import { submitAPI } from './fakeAPI';
-import { useNavigate } from 'react-router-dom';
+
 
 function BookingForm( {availableTimes, dispatch, submitForm} ) {
   const [date, setDate] = useState("");
@@ -15,17 +15,63 @@ function BookingForm( {availableTimes, dispatch, submitForm} ) {
     occasion: occasion // Initialize time with a value
     // Add more form fields as needed
   });
+  const [dateError, setDateError] = useState('');
+  const [guestsError, setGuestsError] = useState('');
+  const [timeError, setTimeError] = useState('');
+
+  const isDateValid = (value) => {
+    const selectedDate = new Date(value);
+    const currentDate = new Date();
+    return selectedDate >= currentDate;
+  };
+
+  const isGuestsValid = (value) => {
+    const minGuests = 1; // Minimum number of guests
+    const maxGuests = 10; // Maximum number of guests
+    const parsedGuests = parseInt(value, 10);
+    return !isNaN(parsedGuests) && parsedGuests >= minGuests && parsedGuests <= maxGuests;
+  };
+
+  
 
   const handleDateChange = (e) => {
     setDate(e.target.value);
     dispatch({ type: 'SET_DATE', payload: e.target.value });
+    if (!isDateValid(e.target.value)) {
+      setDateError('Please select a future date');
+    } else {
+      setDateError('');
+    }
+  }
+  const handleTimeChange = (e) => {
+    setTime(e.target.value);
     
+    if (e.target.value === "") {
+      setTimeError('Please select a time');
+    } else {
+      setTimeError('');
+    }
+  }
+  const handleGuestsChange = (e) => {
+    setGuests(e.target.value);
+    if (!isGuestsValid(e.target.value)) {
+      setGuestsError('please Select a number between 1 and 10')
+    } else {
+      setGuestsError('')
+    }
   }
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    submitForm(formData);
+    submitForm(formData)
+
   }
+  // Enable or disable the submit button based on form validity
+  const isFormValid =
+    date && isDateValid(date) &&
+    
+    guests && isGuestsValid(guests) 
+   
   return (
     <section className='wrapper'>
     <h2 className='bookingformheader'>Book Now</h2>
@@ -36,27 +82,48 @@ function BookingForm( {availableTimes, dispatch, submitForm} ) {
           value={date}
           type="date"
           name='date'
+          required={true}
           onChange={handleDateChange}
+          className={dateError ? '' : 'error'}
            />
+           {dateError && <div className="error">{ dateError }</div>}
       </div>
       <div className='form-item'>
         <label htmlFor="res-time">Choose time</label>
         <select
           value={time}
           name="time"
-          onChange={(e) => setTime(e.target.value)}
+          required={true}
+          onChange={handleTimeChange}
+          className={timeError ? '' : 'error'}
           >
-            {availableTimes.map((time) => <option key={time}>{time}</option>
+            <option value="">Select a time</option>
+            {availableTimes.map((time) => <option value={time} key={time}>
+              {time}
+            </option>
             )}
+            {timeError && <div className="error">{ timeError }</div>}
         </select>
+        
       </div>
       <div className='form-item'>
         <label htmlFor="guests">Number of guests</label>
         <input
           value={guests}
           name='guests'
-          onChange={(e) => setGuests(e.target.value) }
-          type="number" placeholder="1" min="1" max="10" id="guests"/>
+          
+          type="number" 
+          placeholder="1" 
+          // min="1" max="10"
+          required={true} 
+          className={guestsError ? '' : 'error'}
+          onChange={ handleGuestsChange }
+          id="guests"/>
+          {guestsError && (
+          <div className="error">
+            Please enter a valid number of guests (between 1 and 10).
+          </div>
+        )}
       </div>
       <div className='form-item'>
         <label htmlFor="occasion">Occasion</label>
@@ -64,13 +131,16 @@ function BookingForm( {availableTimes, dispatch, submitForm} ) {
           value={occasion}
           name='occasion'
           onChange={(e) => setOccasion(e.target.value)}
-          id="occasion">
+          id="occasion"
+          required={true}
+          >
             <option>Birthday</option>
             <option>Anniversary</option>
         </select>
+        
       </div>
 
-      <input className='submit' type="submit" value="Make Your reservation" />
+      <input className='submit' aria-label="On Click" type="submit" disabled={!isFormValid} value="Make Your reservation" />
     </form>
     </section>
   )
