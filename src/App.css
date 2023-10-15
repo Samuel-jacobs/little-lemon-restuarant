@@ -47,7 +47,7 @@ button.btn {
   border: none;
   border-radius: 16px;
   background-color: #f4ce14;
-  
+  cursor:pointer;
 }
 .flex {
   display: flex;
@@ -84,11 +84,38 @@ p.banner-text {
 /* booking page */
 input, select {
   border: 1px solid var(--secondary4);
-  width: 100%;
+  border-radius: 5px;
+  padding: 5px;
+  width: 300px;
+}
+.form-item {
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+.form-item label {
+  padding-right: 20px;
+}
+
+.bookingform {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 30px;
+  margin-bottom: 50px;
+  display: grid;
+  justify-content: center;
+
+  
 }
 
 .bookingformheader {
   text-align: center;
+}
+.submit {
+  border: none;
+  border-radius: 16px;
+  background-color: #f4ce14;
+  padding: 10px;
+  width: 100%;
 }
 
 @media  screen and (min-width: 1024px) {

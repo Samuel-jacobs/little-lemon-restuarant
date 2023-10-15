@@ -4,8 +4,7 @@ import BannerImage from '../Images/image.png';
 import CardImg1 from '../Images/special1.png';
 import CardImg2 from '../Images/special2.png';
 import CardImg3 from '../Images/special3.png';
-import BookingPage from './BookingPage';
-import { useState, useReducer } from 'react';
+import { Link } from 'react-router-dom';
 
 function Banner() {
   return (
@@ -14,7 +13,7 @@ function Banner() {
         <h1>Little Lemon</h1>
         <h2 className='subtitle'>Chicago</h2>
         <p className='banner-text'>We are a family owned mediterranean resturant focused on traditional recipes served with a modern twist.</p>
-        <button className='btn'>Reserve a Table</button>
+        <Link to="./bookingpage"><button className='btn'>Reserve a Table</button></Link>
       </div>
       <div>
         <img src={BannerImage} />

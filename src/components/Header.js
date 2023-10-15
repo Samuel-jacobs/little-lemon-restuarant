@@ -2,13 +2,14 @@ import React from 'react'
 import logo from '../logo.png';
 import Nav from './Nav'
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 
 function Header() {
   return (
     <section className="wrapper">
       <NavWrapper>
-        <img src={logo} />
+        <Link to="/"><img src={logo} /></Link>
         <Nav />
       </NavWrapper>
     </section>

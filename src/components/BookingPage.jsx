@@ -2,7 +2,10 @@ import React from 'react'
 import BookingForm from './BookingForm';
 import Header from "./Header";
 import Footer from "./Footer";
-import { useState, useReducer } from 'react';
+import { useState, useEffect, useReducer } from 'react';
+import { fetchAPI, submitAPI } from './fakeAPI';
+import { useNavigate } from 'react-router-dom';
+
 
 const date =  new Date();
 console.log(date)
@@ -11,48 +14,95 @@ const newday = date.getDay();
 console.log(newday)
 
 
-const  myTimes = () => {
-  return [
-    {id: 1, time: "17:00"},
-    {id: 2, time: "18:00"},
-    {id: 3, time: "19:00"},
-    {id: 4, time: "20:00"},
-    {id: 5, time: "21:00"},
-    {id: 6, time: "22:00"}
-  ]
-}
-const initializeTimes = myTimes();
+
+
+// const initialState = {
+//   selectedDate: '',
+//   availableTimes: [
+//     '17:00',
+//     '18:00',
+//     '19:00',
+//     '20:00',
+//     '21:00',
+//   ],
+// };
+
 
 
 
 const updateTimes = (state, action) => {
   switch (action.type) {
-    case 1:
-      // return state.map((time) => {
-      //   if (newday >= 1 && newday <= 6) {
-      //     return time;
-      //   } else if (newday === 7) {
-      //     return {...time.slice(2)}
-      //   }
-      // })
-      return state;
+    case 'SET_DATE':
+      try {
+        const newDate = action.payload;
+        const availableTimes = fetchAPI(newDate); // Fetch available times for the selected date
+        
+        return {
+          ...state,
+          selectedDate: newDate,
+          availableTimes,
+        };
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        return state; // Return the current state in case of an error
+      }
     default:
       return state;
-    
+  }
+}
+const initializeTimes =  () => {
+  try {
+    const today = new Date();
+    const formattedDate = today.toISOString().slice(0, 10); // Get today's date in YYYY-MM-DD format
+    const availableTimes = fetchAPI(formattedDate); // Fetch available times for today
+
+    // Return the initial state with available times for today
+    return {
+      selectedDate: formattedDate,
+      availableTimes,
+    };
+  } catch (error) {
+    console.error('Error fetching data now bro:', error);
+    return {
+      selectedDate: '',
+      availableTimes: [], // Provide default values in case of an error
+    };
   }
 }
 
-
 function BookingPage() {
-  const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes);
+  useEffect(() => {
+
+
+
+  }, []);
 
   
 
+  const [state, dispatch] = useReducer(updateTimes, null, initializeTimes);
+  const navigate = useNavigate();
+  const submitForm = async (formData) => {
+    try {
+      // Call the submitAPI function with the form data
+      const isSuccess = await submitAPI(formData);
 
+      if (isSuccess) {
+        // Navigate to the booking confirmed page upon successful submission
+        navigate('/ConfirmedBooking'); // Replace with your desired route
+      } else {
+        // Handle submission failure (if needed)
+        console.error('Form submission failed');
+      }
+    } catch (error) {
+      // Handle any errors that might occur during the submission
+      console.error('Error submitting form:', error);
+    }
+  };
+  console.log(state.availableTimes)
   return (
     <>
       <Header />
-      <BookingForm className="wrapper" times = {availableTimes}   dispatch = {dispatch} />
+      <BookingForm className="wrapper" availableTimes = {state.availableTimes} submitForm={submitForm} dispatch = {dispatch} />
       <Footer />
     </>
   )
