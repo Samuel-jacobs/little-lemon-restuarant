@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-import { submitAPI } from './fakeAPI';
+// import { submitAPI } from './fakeAPI';
 
 
 function BookingForm( {availableTimes, dispatch, submitForm} ) {

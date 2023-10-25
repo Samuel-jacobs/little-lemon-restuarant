@@ -7,11 +7,11 @@ import { fetchAPI, submitAPI } from '../components/fakeAPI';
 import { useNavigate } from 'react-router-dom';
 
 
-const date =  new Date();
-console.log(date)
-const newday = date.getDay();
+// const date =  new Date();
+// console.log(date)
+// const newday = date.getDay();
 
-console.log(newday)
+// console.log(newday)
 
 
 
