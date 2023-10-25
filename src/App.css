@@ -58,12 +58,11 @@ p.banner-text {
   color: var(--secondary3);
 }
 
-.navbar li {
-  list-style-type: none;
-}
+
 .navbar a {
-  color: var(--secondary4);
   text-decoration: none;
+  color: var(--secondary4);
+  font-size: 16px;
 }
 
 .specials {
@@ -122,14 +121,82 @@ div.error {
   color: red;
 }
 
+.confirmed-booking {
+  display: flex;
+  height: 50vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-block: 50px;
+}
+
+@media screen and (max-width: 768px) {
+  .flex {
+    padding-inline: 20px;
+  }
+  
+  .nav-logo {
+    padding-left: 20px;
+    align-self: center;
+  }
+  .hamburger {
+    padding-right: 20px;
+    font-size: larger;
+  }
+  .navbar-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    padding-block: 20px;
+  }
+ 
+  .navbar {
+    position: absolute;
+    margin-top: 50px;
+    
+    width: 100%;
+    z-index: 9999;
+    background-color: var(--secondary1);
+    display: none;
+    padding-block: 50px;
+    
+  }
+  .open {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    text-align: center;
+  }
+  
+
+}
 @media  screen and (min-width: 1024px) {
   .wrapper {
     padding-inline: 200px;
   }
-
-  .navbar {
+  .navbar-main {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+  }
+  .navbar-container {
+    width: 100%;
     display: flex;
     justify-content: space-between;
+  }
+  .hamburger {
+    display: none;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .navbar a {
+    margin-left: 20px;
   }
   
 }

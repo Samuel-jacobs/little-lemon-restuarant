@@ -1,26 +1,28 @@
 import React from 'react'
 import styled from 'styled-components';
 import BannerImage from '../Images/image.png';
-import CardImg1 from '../Images/special1.png';
-import CardImg2 from '../Images/special2.png';
-import CardImg3 from '../Images/special3.png';
+// import Meals from './Meals';
 import { Link } from 'react-router-dom';
+import { mealContent } from './Meals';
 
 function Banner() {
   return (
     <BannerWrapper className='wrapper'>
-      <div>
+      <div className='banner-text'>
         <h1>Little Lemon</h1>
         <h2 className='subtitle'>Chicago</h2>
         <p className='banner-text'>We are a family owned mediterranean resturant focused on traditional recipes served with a modern twist.</p>
         <Link to="./bookingpage"><button className='btn'>Reserve a Table</button></Link>
       </div>
-      <div>
+      <div className='banner-image'>
         <img src={BannerImage} />
       </div>
     </BannerWrapper>
   )
 }
+
+
+
 function Specials() {
   return (
     <section className='specials wrapper'>
@@ -29,6 +31,23 @@ function Specials() {
         <button className='btn'>Order Menu</button>
       </div>
       <CardWrapper>
+      {mealContent.map((meal) => (
+        <Card>
+          <img src={meal.image} />
+          <div className='card-body'>
+            <div className='flex'>
+              <h5>{meal.name}</h5>
+              <p className='price-text'>{meal.price}</p>
+            </div>
+            <p>{meal.description}</p>
+            <a>Order a delivery</a>
+          </div>
+        </Card>
+      ))}
+
+
+    </CardWrapper>
+      {/* <CardWrapper>
         <Card>
           <img src={CardImg1} />
           <div className='card-body'>
@@ -64,7 +83,7 @@ function Specials() {
           
 
         </Card>
-      </CardWrapper>
+      </CardWrapper> */}
     </section>
   )
 }
@@ -128,15 +147,12 @@ function About() {
 }
 
 function Main() {
-  
-
   return (
     <>
       <Banner />
       <Specials />
       <Testimonials />
       <About />
-      
     </>
   )
 
@@ -150,6 +166,7 @@ const BannerWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   padding-top: 30px;
+  
     p {
       max-width: 267px;
       margin-bottom: 20px;
@@ -160,7 +177,17 @@ const BannerWrapper = styled.div`
       width: 375px;
       margin-bottom: -50px;
     }
-  
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    padding-inline: 20px;
+    .banner-text {
+      width: 100%;
+      
+    }
+    .banner-image {
+      padding-top: 30px;
+    }
+  }
 
 `
 const CardWrapper = styled.div`
@@ -168,8 +195,16 @@ const CardWrapper = styled.div`
     justify-content: space-between;
     padding-top: 50px;
 
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
 `
 const Card = styled.div`
+    margin-bottom: 30px;
     height: 440px;
     width: 265px;
     background-color: #edefee;
@@ -199,12 +234,22 @@ const Card = styled.div`
           color: #ee9972;
         }
       }
+
+      @media screen and (max-width: 768px) {
+        
+      }
 `
 
 const SmallCardWrapper = styled.div`
       display: flex;
       justify-content: space-between;
       padding-top: 50px;
+
+      @media screen and (max-width: 768px) {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
 
 `
 const SmallCard = styled.div`
@@ -237,6 +282,10 @@ const SmallCard = styled.div`
         font-size: 14px;
       }
 
+      @media screen and (max-width: 768px) {
+        margin-bottom: 30px;
+      }
+
 `
 const FlexWrapper = styled.div`
       display: flex;
@@ -260,7 +309,12 @@ const FlexWrapper = styled.div`
           max-width: 370px;
         }
       }
-
+      @media screen and (max-width: 768px) {
+        flex-direction: column;
+        .about-text {
+          margin-bottom: 30px;
+        }
+      }
 
 `
 

@@ -8,10 +8,9 @@ import { Link } from 'react-router-dom';
 function Header() {
   return (
     <section className="wrapper">
-      <NavWrapper>
-        <Link to="/"><img src={logo} /></Link>
+      
         <Nav />
-      </NavWrapper>
+      
     </section>
 
   )
