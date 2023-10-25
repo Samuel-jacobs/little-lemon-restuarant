@@ -115,6 +115,7 @@ input, select {
   background-color: #f4ce14;
   padding: 10px;
   width: 100%;
+  /* cursor: not-allowed; */
 }
 
 div.error {
@@ -179,7 +180,7 @@ div.error {
   .navbar-main {
     display: flex;
     align-items: center;
-    padding: 20px 0;
+    padding: 20px 200px;
   }
   .navbar-container {
     width: 100%;

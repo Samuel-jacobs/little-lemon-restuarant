@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../logo.png';
 import { useState } from 'react';
-import {FaHamburger, FaPizzaSlice} from 'react-icons/fa';
+import {FaHamburger} from 'react-icons/fa';
 
 
 function Nav() {
@@ -23,8 +23,8 @@ function Nav() {
             <Link to="/">Home</Link>
             <Link to="/">About</Link>
             <Link to="/">Menu</Link>
-            <Link to="/">Reservation</Link>
-            <Link to="/bookingpage">Order Online </Link>
+            <Link to="/bookingpage">Reservation</Link>
+            <Link to="/">Order Online </Link>
             <Link to="/">Login</Link>
           
         </div>

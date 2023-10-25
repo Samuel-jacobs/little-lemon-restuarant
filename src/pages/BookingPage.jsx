@@ -1,6 +1,6 @@
 import React from 'react'
 import BookingForm from '../components/BookingForm';
-import Header from "../components/Header";
+import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import { useState, useEffect, useReducer } from 'react';
 import { fetchAPI, submitAPI } from '../components/fakeAPI';
@@ -81,10 +81,10 @@ function BookingPage() {
 
   const [state, dispatch] = useReducer(updateTimes, null, initializeTimes);
   const navigate = useNavigate();
-  const submitForm = async (formData) => {
+  const submitForm = (formData) => {
     try {
       // Call the submitAPI function with the form data
-      const isSuccess = await submitAPI(formData);
+      const isSuccess = submitAPI(formData);
 
       if (isSuccess) {
         // Navigate to the booking confirmed page upon successful submission
@@ -101,7 +101,7 @@ function BookingPage() {
   console.log(state.availableTimes)
   return (
     <>
-      <Header />
+      <Nav />
       <BookingForm className="wrapper" availableTimes = {state.availableTimes} submitForm={submitForm} dispatch = {dispatch} />
       <Footer />
     </>
